@@ -1,12 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function App() {
+function InstaGitHubCard({githubUser}) {
   return (
-    <View style={styles.container}>
+    <View>
       <View>
-        <Text>WeslleyFratini</Text>
+        <Text>{githubUser}</Text>
         <Image
           style={{
             width: 40,
@@ -14,7 +14,7 @@ export default function App() {
             borderRadius: 20,
           }}
           source={{
-            uri: "https://github.com/weslleyfratini.png",
+            uri: `https://github.com/${githubUser}.png`,
           }}
         />
       </View>
@@ -26,16 +26,33 @@ export default function App() {
           borderRadius: 20,
         }}
         source={{
-          uri: "https://placehold.it/150x150",
+          uri: `https://github.com/${githubUser}.png`,
         }}
       />
 
-      <View>
-        <Text>Like</Text>
-      </View>
+      <Ionicons name="ios-heart" size={24} color="black" />
     </View>
   );
 }
+
+export default function App() {
+  return (
+    <View> style={styles.container}
+   <ScrollView>
+      {
+      [
+        "WeslleyFratini", 
+        "WeslleyFratini",
+        "WeslleyFratini", 
+        "WeslleyFratini"
+      ].map((githubUser) =>
+      <InstaGitHubCard key={githubUser} githubUser={githubUser}/>
+      )}
+    </ScrollView>
+    </View>
+
+  );
+
 
 const styles = StyleSheet.create({
   container: {
